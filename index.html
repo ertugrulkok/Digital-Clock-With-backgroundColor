@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1 id='time'></h1>
     <div class="datetime">
       <div class="time">
         <input
@@ -48,7 +49,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #10101e;
+        
+        
       }
 
       .datetime {
@@ -88,9 +90,83 @@
       span {
         font-size: 60px;
       }
+      h1{
+          color: white;
+          position: absolute;
+          margin-bottom: 500px;
+      }
     </style>
 
     <script>
+        function newHour(){ var now = new Date();
+    var hours = now.getHours();
+    var ft = now.toLocaleString("da-German", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour24: true
+    });
+    
+    if (0 <= hours && hours < 6) {
+        document.body.style.background = "blue";
+        var colour = "Blue"; 
+    }
+    if (6 <= hours && hours < 12) {
+        document.body.style.backgroundColor = "orange";
+        var colour = "Orange"; 
+       
+    }
+    if (12 <= hours && hours < 18) {
+        document.body.style.backgroundColor = "red";
+        var colour = "Red"; 
+       
+    }
+    if (18 <= hours && hours < 24) {
+        document.body.style.backgroundColor = "black";
+        var colour = "Black";
+    }
+    document.getElementById("time").innerHTML = `The time is ${ft} and the background colour is ${colour}`;
+    setTimeout(newHour , 1000)
+   }
+   newHour()
+
+       
+
+    var now = new Date();
+    var hours = now.getHours();
+    var ft = now.toLocaleString("da-German", {
+        hour: "numeric",
+        minute: "numeric",
+        hour24: true
+    });
+    
+    if (0 <= hours && hours < 6) {
+        document.body.style.background = "blue";
+        var colour = "Blue"; 
+    }
+    if (6 <= hours && hours < 12) {
+        document.body.style.backgroundColor = "orange";
+        var colour = "Orange"; 
+       
+    }
+    if (12 <= hours && hours < 18) {
+        document.body.style.backgroundColor = "red";
+        var colour = "Red"; 
+       
+    }
+    if (18 <= hours && hours < 24) {
+        document.body.style.backgroundColor = "black";
+        var colour = "Black";
+    }
+    document.getElementById("time").innerHTML = `The time is ${ft} and the background colour is ${colour}`;
+   
+
+
+
+
+
+
+
       function format(input) {
         var hour = document.getElementById("hourInput").value;
         if (input.value.length === 1) {
@@ -109,6 +185,8 @@
           document.body.style.backgroundColor = "black";
         }
       }
+
+
     </script>
   </body>
 </html>
